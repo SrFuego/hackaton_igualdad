@@ -9,12 +9,12 @@ from rest_framework.routers import DefaultRouter
 
 # Local imports
 # from ..app_django.routers import router_list as app_django_router
+from ..accounts.routers import accounts
 
 # Create your routers here.
-# routers_tuples = (app_django_router,)
+routers_tuples = (accounts,)
 routers_lists = sum(
-    # [list(router_tuple) for router_tuple in routers_tuples], [])
-    [list(router_tuple) for router_tuple in ()], [])
+    [list(router_tuple) for router_tuple in routers_tuples], [])
 
 router = DefaultRouter()
 
