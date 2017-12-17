@@ -28,7 +28,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ("id", "user", "cell_phone", "dni", "ubigeo",)
+        fields = ("id", "user", "cell_phone", "dni", "location",)
 
     def create(self, validated_data):
         user = get_user_model().objects.create_user(
