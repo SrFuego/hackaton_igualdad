@@ -26,6 +26,9 @@ from apps.common.routers import router
 from rest_framework.documentation import include_docs_urls
 
 
+from apps.accounts.views import ObtainAuthToken
+
+
 API_TITLE = "hackaton igualdad"
 API_DESCRIPTION = "Api para la hackaton de la igualdad de genero"
 
@@ -38,6 +41,9 @@ urlpatterns = [
     url(
         r"^docs/",
         include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
+    url(
+        r"^api/v1/api-token-auth/", ObtainAuthToken.as_view(),
+        name="custom-token-view"),
     url(r"^api/v1/", include(router.urls, namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

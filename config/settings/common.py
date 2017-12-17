@@ -37,6 +37,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     "pipeline",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
 )
 
