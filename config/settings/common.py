@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     "apps.accounts",
     "apps.common",
+    "apps.packages",
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -120,6 +121,11 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+MEDIA_URL = os.environ.get('MEDIA', '/media/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Django Rest Framework Settings
 REST_FRAMEWORK = {

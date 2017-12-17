@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
 
 
 from apps.common.routers import router
@@ -38,7 +39,8 @@ urlpatterns = [
         r"^docs/",
         include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
     url(r"^api/v1/", include(router.urls, namespace="api")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 if settings.DEBUG:
     import debug_toolbar
