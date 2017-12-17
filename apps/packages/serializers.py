@@ -16,14 +16,14 @@ from .models import Activity, Package
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = ("image",)
+        fields = ("name", "description", "hours", "days", "image",)
 
 
 class PackageSerializer(serializers.ModelSerializer):
-    images = ActivitySerializer(many=True, read_only=True)
-    # images = serializers.HyperlinkedRelatedField(
-    #     many=True, view_name="image-detail", read_only=True)
+    activities = ActivitySerializer(many=True, read_only=True)
 
     class Meta:
         model = Package
-        fields = ("id", "name", "description", "price", "duration", "images",)
+        fields = (
+            "id", "name", "description", "price", "duration", "image",
+            "activities",)

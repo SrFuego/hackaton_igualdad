@@ -25,7 +25,7 @@ class Package(TimeStampedModel):
     price = models.PositiveSmallIntegerField()
 
     @property
-    def images(self):
+    def activities(self):
         return self.activity_set.all()
 
     class Meta:
@@ -45,14 +45,14 @@ class Package(TimeStampedModel):
 
 
 class Activity(models.Model):
-    date = models.DateField()
     description = models.TextField()
     image = StdImageField(
         upload_to=UploadToAutoSlugClassNameDir(populate_from="name"),
         variations={"thumbnail": (400, 250)})
     name = models.CharField(max_length=50)
     package = models.ForeignKey("Package")
-    time = models.TimeField()
+    hours = models.SmallIntegerField()
+    days = models.SmallIntegerField()
 
     class Meta:
         verbose_name = "Actividad"
