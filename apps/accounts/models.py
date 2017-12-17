@@ -22,5 +22,8 @@ class Account(TimeStampedModel):
         settings.AUTH_USER_MODEL, related_name="account",
         verbose_name="Usuario")
 
+    class Meta:
+        verbose_name = "Cuenta"
+
     def __str__(self):
         return self.user.get_full_name()
