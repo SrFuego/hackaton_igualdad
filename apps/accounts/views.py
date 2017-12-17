@@ -36,7 +36,6 @@ class ObtainAuthToken(APIView):
             account = user.account
             return Response({
                 "account_id": account.id,
-                # "account_level": account.level,
                 "token": token.key
             }, status=status.HTTP_200_OK)
         except Exception as e:
