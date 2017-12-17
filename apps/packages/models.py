@@ -9,7 +9,6 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from stdimage.models import StdImageField
 from stdimage.utils import UploadToAutoSlugClassNameDir
-from stdimage.validators import MaxSizeValidator, MinSizeValidator
 
 
 # Local imports
@@ -21,7 +20,6 @@ class Package(TimeStampedModel):
     duration = models.CharField(max_length=50)
     image = StdImageField(
         upload_to=UploadToAutoSlugClassNameDir(populate_from="name"),
-        validators=[MinSizeValidator(400, 250), MaxSizeValidator(1000, 1000)],
         variations={"thumbnail": (400, 250)})
     name = models.CharField(max_length=50)
     price = models.PositiveSmallIntegerField()
@@ -51,7 +49,6 @@ class Activity(models.Model):
     description = models.TextField()
     image = StdImageField(
         upload_to=UploadToAutoSlugClassNameDir(populate_from="name"),
-        validators=[MinSizeValidator(400, 250), MaxSizeValidator(1000, 1000)],
         variations={"thumbnail": (400, 250)})
     name = models.CharField(max_length=50)
     package = models.ForeignKey("Package")
