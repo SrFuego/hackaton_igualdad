@@ -15,5 +15,5 @@ from .models import Account
 # Register your models here.
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "ubigeo", "dni", "cell_phone",)
-    list_filter = ("ubigeo",)
+    list_display = ("__str__", "location", "dni", "cell_phone",)
+    list_filter = ("location",)

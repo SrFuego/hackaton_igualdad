@@ -17,7 +17,7 @@ from model_utils.models import TimeStampedModel
 class Account(TimeStampedModel):
     cell_phone = models.CharField(max_length=9, verbose_name="celular")
     dni = models.CharField(max_length=8, unique=True)
-    ubigeo = models.CharField(max_length=50)
+    location = models.CharField(max_length=50, verbose_name="ubicacion")
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name="account",
         verbose_name="Usuario")
